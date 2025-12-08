@@ -1,1 +1,136 @@
-a
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Nos Casamos! MyL</title>
+    
+    <style>
+        :root {
+            --color-principal: #a54f4a; /* Borgoña o Rojo Oscuro */
+            --color-fondo: #f9f7f4; /* Blanco roto/Crema */
+            --color-texto: #333333;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background-color: var(--color-fondo);
+            color: var(--color-texto);
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        header {
+            background-color: var(--color-principal);
+            color: white;
+            padding: 50px 20px;
+            font-size: 1.2em;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif; /* Estilo elegante para nombres */
+            font-size: 3em;
+            margin-bottom: 5px;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            color: var(--color-principal);
+            font-size: 2em;
+            margin-top: 40px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid var(--color-principal);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .section {
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .fecha {
+            font-size: 1.5em;
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        .lugar, .confirmacion {
+            margin-top: 20px;
+        }
+
+        a {
+            color: var(--color-principal);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background-color: var(--color-principal);
+            color: white;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <p>Con gran alegría, os invitamos a celebrar nuestra boda</p>
+        <h1>Marta &amp; Luis</h1>
+        <p class="fecha">Sábado, 26 de Septiembre de 2026</p>
+    </header>
+
+    <div id="historia" class="section">
+        <h2>Nuestra Historia</h2>
+        <p>Una breve descripción de cómo nos conocimos, nuestra propuesta, y por qué decidimos dar el paso. [¡Reemplaza este texto con tu propia historia!]</p>
+    </div>
+    
+    <hr>
+
+    <div id="evento" class="section">
+        <h2>Detalles del Evento</h2>
+        
+        <div class="lugar">
+            <h3>Ceremonia</h3>
+            <p>
+                Hora: 12:00h<br>
+                Lugar: Muntanyeta dels Sants<br>
+                <a href="https://maps.app.goo.gl/vf2hFVDzTPLb6ySh9" target="_blank">Ver en mapa</a>
+            </p>
+        </div>
+
+        <div class="lugar">
+            <h3>Recepción y Fiesta</h3>
+            <p>
+                Hora: 14:30h<br>
+                Lugar: Nou Racó en El Palmar<br>
+                <a href="https://maps.app.goo.gl/AstdxZe5Nk37t3Qi7" target="_blank">Ver en mapa</a>
+            </p>
+        </div>
+    </div>
+    
+    <hr>
+
+    <div id="confirmacion" class="section confirmacion">
+        <h2>Confirmación de Asistencia (RSVP)</h2>
+        <p>Por favor, confírmanos tu asistencia antes del 30 de agosto de 2024 para poder organizar todo.</p>
+        
+        <p>
+            <a href="mailto:lmvelazquezmesa@gmail.com?subject=Confirmación Boda" style="font-size: 1.3em; padding: 10px 20px; border: 2px solid var(--color-principal); display: inline-block; margin-top: 15px;">CONFIRMAR AHORA</a>
+        </p>
+    </div>
+
+    <footer>
+        <p>&copy; Marta y Luis | ¡Gracias por ser parte de nuestra historia!</p>
+    </footer>
+
+</body>
+</html>
