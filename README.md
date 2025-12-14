@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>¡Nos Casamos! MyL</title>
-    
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Nothing+You+Could+Do&family=Oooh+Baby&family=Over+the+Rainbow&family=Shadows+Into+Light&display=swap"
+        rel="stylesheet">
+
     <style>
         :root {
-            --color-principal: #a54f4a; /* Borgoña o Rojo Oscuro */
-            --color-fondo: #f9f7f4; /* Blanco roto/Crema */
+            --color-principal: #31496a;
+            /* Borgoña o Rojo Oscuro */
+            --color-fondo: #f9f7f4;
+            /* Blanco roto/Crema */
             --color-texto: #333333;
         }
 
@@ -22,27 +31,78 @@
         }
 
         header {
-            background-color: var(--color-principal);
+            position: relative;
+            background-image: url('https://static.vecteezy.com/system/resources/thumbnails/012/313/170/small/watercolor-dark-blue-background-texture-navy-blue-stains-on-paper-hand-painted-photo.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
             color: white;
-            padding: 50px 20px;
+            padding: 60px 20px;
             font-size: 1.2em;
+            text-align: center;
+            overflow: hidden;
+            height: 24em;
         }
 
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 200px; /* altura del difuminado */
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, var(--color-fondo) 100%);
+            pointer-events: none; /* no bloquea interacciones */
+        }
+
+                /*header {
+    background: linear-gradient(135deg, rgba(49, 73, 106, 0.85), rgba(162, 196, 224, 0.85));
+    backdrop-filter: blur(8px); 
+    color: white;
+    padding: 60px 20px;
+    font-size: 1.2em;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+header h1 {
+    font-family: 'Nothing You Could Do', cursive;
+    font-size: 3em;
+    margin-bottom: 5px;
+    letter-spacing: 2px;
+    color: #fff;
+} */
+
+
         h1 {
-            font-family: 'Playfair Display', serif; /* Estilo elegante para nombres */
+            font-family: 'Nothing You Could Do', cursive;
+            /* Estilo elegante para nombres Shadows into light*/
             font-size: 3em;
             margin-bottom: 5px;
             letter-spacing: 2px;
         }
 
         h2 {
+            font-family: 'Shadows into Light', sans;
             color: var(--color-principal);
-            font-size: 2em;
+            font-size: 2.8em;
             margin-top: 40px;
             margin-bottom: 10px;
             border-bottom: 2px solid var(--color-principal);
             display: inline-block;
             padding-bottom: 5px;
+        }
+
+        h3,
+        p {
+            font-family: 'Kalam', cursive;
+            font-size: 1.7em;
+        }
+
+        p {
+            font-size: 1.5em;
         }
 
         .section {
@@ -57,7 +117,8 @@
             margin-top: 10px;
         }
 
-        .lugar, .confirmacion {
+        .lugar,
+        .confirmacion {
             margin-top: 20px;
         }
 
@@ -78,32 +139,147 @@
             margin-top: 50px;
         }
 
+        .form-wrapper {
+            background: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+            margin-top: 30px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 6px;
+            font-size: 15px;
+            font-family: inherit;
+            border: 1px solid #dcdcdc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            background-color: #fff;
+        }
+
+        /* Quitar estilo nativo del select */
+        select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml;utf8,<svg fill='%238B5E3C' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 18px;
+            padding-right: 40px;
+            /* espacio para la flecha */
+        }
+
+        button {
+            font-family: 'Kalam', cursive;
+            font-size: 1.7em;
+            display: block;
+            width: 100%;
+            padding: 14px;
+            background: #596c86;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background: #a2c4e0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        input,
+        select {
+            height: 46px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: 33% 33% 33%;
+        }
+
+        .fade {
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: opacity 0.4s ease, max-height 0.4s ease;
+        }
+
+        .fade.visible {
+            opacity: 1;
+            max-height: 100%;
+            /* suficientemente grande */
+        }
     </style>
+    
+    <script>
+        function mostrarDiv() {
+            const formulario = document.getElementById("miDiv");
+            const confirmacion = document.getElementById("confirmacion");
+
+            // Oculta el bloque de confirmación inicial con fade out
+            confirmacion.style.transition = "opacity 0.4s ease";
+            confirmacion.style.opacity = 0;
+
+            // Espera el tiempo de transición y luego lo oculta completamente
+            setTimeout(() => {
+                confirmacion.style.display = "none";
+
+                // Muestra el formulario con fade in
+                formulario.classList.add("visible");
+
+                formulario.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+                // Poner el foco en el primer input
+                const primerInput = formulario.querySelector('input, select, textarea');
+                if (primerInput) primerInput.focus();
+
+            }, 400);
+        }
+    </script>
 </head>
+
 <body>
 
     <header>
         <p>Con gran alegría, os invitamos a celebrar nuestra boda</p>
-        <h1>Marta &amp; Luis</h1>
+        <h1 style="color: #a2c4e0;">Marta y Luis</h1>
         <p class="fecha">Sábado, 26 de Septiembre de 2026</p>
     </header>
 
     <div id="historia" class="section">
         <h2>Nuestra Historia</h2>
-        <p>Una breve descripción de cómo nos conocimos, nuestra propuesta, y por qué decidimos dar el paso. [¡Reemplaza este texto con tu propia historia!]</p>
+        <p>Una breve descripción de cómo nos conocimos, nuestra propuesta, y por qué decidimos dar el paso. [¡Reemplaza
+            este texto con tu propia historia!]</p>
     </div>
-    
-    <hr>
 
     <div id="evento" class="section">
         <h2>Detalles del Evento</h2>
-        
+
         <div class="lugar">
             <h3>Ceremonia</h3>
             <p>
                 Hora: 12:00h<br>
-                Lugar: Muntanyeta dels Sants<br>
-                <a href="https://maps.app.goo.gl/vf2hFVDzTPLb6ySh9" target="_blank">Ver en mapa</a>
+                Lugar: Ermita dels Sants de la Pedra<br>
+                <a href="https://maps.app.goo.gl/Qkh9CPi93UWmje337" target="_blank">Ver en mapa</a>
             </p>
         </div>
 
@@ -116,21 +292,71 @@
             </p>
         </div>
     </div>
-    
-    <hr>
 
+    <!-- Botón Confirmar -->
     <div id="confirmacion" class="section confirmacion">
-        <h2>Confirmación de Asistencia (RSVP)</h2>
-        <p>Por favor, confírmanos tu asistencia antes del 30 de agosto de 2024 para poder organizar todo.</p>
-        
-        <p>
-            <a href="mailto:lmvelazquezmesa@gmail.com?subject=Confirmación Boda" style="font-size: 1.3em; padding: 10px 20px; border: 2px solid var(--color-principal); display: inline-block; margin-top: 15px;">CONFIRMAR AHORA</a>
-        </p>
+        <h2>Confirmación de Asistencia</h2>
+        <p>Por favor, confírmanos tu asistencia antes del 30 de agosto de 2026 para poder organizar todo.</p>
+
+        <button type="button" onclick="mostrarDiv()"><a href="#form">Confirmar</a></button>
     </div>
+
+    <!-- Formulario RSVP -->
+    <div id="miDiv" class="fade">
+        <div class="container">
+            <section>
+                <h2 >Confirmación de Asistencia</h2>
+                <p>Por favor, confírmanos antes del <strong>30 de agosto de 2026</strong></p>
+
+                <div class="form-wrapper">
+                    <form action="#" method="POST">
+                        <label for="nombre">Nombre y apellidos</label>
+                        <input type="text" id="nombre" name="nombre" required>
+
+                        <label for="asistencia">¿Vas a asistir?</label>
+                        <select id="asistencia" name="asistencia" required>
+                            <option value="">Selecciona</option>
+                            <option value="si">Sí, asistiré</option>
+                            <option value="no">No podré asistir</option>
+                        </select>
+
+                        <label for="acompanantes">Número de acompañantes</label>
+                        <input type="number" id="acompanantes" name="acompanantes" min="0" value="0">
+
+                        <label for="autobus">Autobús (ida y/o vuelta)</label>
+                        <select id="autobus" name="autobus">
+                            <option value="ninguno">No necesito autobús</option>
+                            <option value="ida">Solo ida</option>
+                            <option value="vuelta">Solo vuelta</option>
+                            <option value="ida_vuelta">Ida y vuelta</option>
+                        </select>
+
+                        <label for="menu">Preferencias de menú / alergias</label>
+                        <textarea id="menu" name="menu" rows="3"
+                            placeholder="Ej. vegetariano, celíaco, intolerancias..."></textarea>
+
+                        <label for="top3">TOP 3 musical</label>
+                        <div class="grid-container">
+                            <input type="text" name="top1" style="margin-right:4px;">
+                            <input type="text" name="top2" style="margin-right:4px;">
+                            <input type="text" name="top3">
+                        </div>
+
+                        <label for="mensaje">Mensaje para nosotros</label>
+                        <textarea id="mensaje" name="mensaje" rows="3"></textarea>
+
+                        <button type="submit">Enviar Confirmación</button>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </div>
+
 
     <footer>
         <p>&copy; Marta y Luis | ¡Gracias por ser parte de nuestra historia!</p>
     </footer>
 
 </body>
+
 </html>
