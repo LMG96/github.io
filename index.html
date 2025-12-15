@@ -50,12 +50,14 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 200px; /* altura del difuminado */
-            background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, var(--color-fondo) 100%);
-            pointer-events: none; /* no bloquea interacciones */
+            height: 200px;
+            /* altura del difuminado */
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, var(--color-fondo) 100%);
+            pointer-events: none;
+            /* no bloquea interacciones */
         }
 
-                /*header {
+        /*header {
     background: linear-gradient(135deg, rgba(49, 73, 106, 0.85), rgba(162, 196, 224, 0.85));
     backdrop-filter: blur(8px); 
     color: white;
@@ -229,8 +231,8 @@ header h1 {
             /* suficientemente grande */
         }
     </style>
-    
-    <script>
+
+    <!--<script>
         function mostrarDiv() {
             const formulario = document.getElementById("miDiv");
             const confirmacion = document.getElementById("confirmacion");
@@ -254,6 +256,84 @@ header h1 {
 
             }, 400);
         }
+        const rsvpForm = document.getElementById('rsvpForm');
+
+        rsvpForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(rsvpForm);
+
+            fetch('https://script.google.com/macros/s/AKfycbzK0yuM7U82FHE1SulIy_OoEJvF7RWkrKRv5nHhVLAOwDgZkMTvvMISCrDQocv4dQM2fQ/exec', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(result => {
+                // Mostrar mensaje de éxito
+                document.getElementById('mensajeExito').style.display = 'block';
+                rsvpForm.reset();
+                rsvpForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            })
+            .catch(error => {
+                alert('Error al enviar. Inténtalo de nuevo.');
+                console.error(error);
+            });
+        });
+        
+    </script> -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // Mostrar formulario con fade + scroll + foco
+            function mostrarDiv() {
+                const formulario = document.getElementById("miDiv");
+                const confirmacion = document.getElementById("confirmacion");
+
+                confirmacion.style.transition = "opacity 0.4s ease";
+                confirmacion.style.opacity = 0;
+
+                setTimeout(() => {
+                    confirmacion.style.display = "none";
+                    formulario.classList.add("visible");
+                    formulario.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+                    const primerInput = formulario.querySelector('input, select, textarea');
+                    if (primerInput) primerInput.focus();
+                }, 400);
+            }
+
+            // Hacemos la función accesible al onclick
+            window.mostrarDiv = mostrarDiv;
+
+            // FORMULARIO
+            const rsvpForm = document.getElementById('rsvpForm');
+
+            if (!rsvpForm) {
+                console.error('❌ No se encontró el formulario con id="rsvpForm"');
+                return;
+            }
+
+            rsvpForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const formData = new FormData(rsvpForm);
+
+                fetch('https://script.google.com/macros/s/AKfycbzK0yuM7U82FHE1SulIy_OoEJvF7RWkrKRv5nHhVLAOwDgZkMTvvMISCrDQocv4dQM2fQ/exec', {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(response => response.text())
+                    .then(() => {
+                        document.getElementById('mensajeExito').style.display = 'block';
+                        rsvpForm.reset();
+                    })
+                    .catch(error => {
+                        alert('Error al enviar. Inténtalo de nuevo.');
+                        console.error(error);
+                    });
+            });
+
+        });
     </script>
 </head>
 
@@ -305,11 +385,11 @@ header h1 {
     <div id="miDiv" class="fade">
         <div class="container">
             <section>
-                <h2 >Confirmación de Asistencia</h2>
+                <h2>Confirmación de Asistencia</h2>
                 <p>Por favor, confírmanos antes del <strong>30 de agosto de 2026</strong></p>
 
                 <div class="form-wrapper">
-                    <form action="#" method="POST">
+                    <form id="rsvpForm" action="#" method="POST">
                         <label for="nombre">Nombre y apellidos</label>
                         <input type="text" id="nombre" name="nombre" required>
 
