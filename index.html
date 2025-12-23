@@ -58,24 +58,24 @@
         }
 
         /*header {
-    background: linear-gradient(135deg, rgba(49, 73, 106, 0.85), rgba(162, 196, 224, 0.85));
-    backdrop-filter: blur(8px); 
-    color: white;
-    padding: 60px 20px;
-    font-size: 1.2em;
-    border-bottom-left-radius: 25px;
-    border-bottom-right-radius: 25px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-}
+            background: linear-gradient(135deg, rgba(49, 73, 106, 0.85), rgba(162, 196, 224, 0.85));
+            backdrop-filter: blur(8px); 
+            color: white;
+            padding: 60px 20px;
+            font-size: 1.2em;
+            border-bottom-left-radius: 25px;
+            border-bottom-right-radius: 25px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
 
-header h1 {
-    font-family: 'Nothing You Could Do', cursive;
-    font-size: 3em;
-    margin-bottom: 5px;
-    letter-spacing: 2px;
-    color: #fff;
-} */
+        header h1 {
+            font-family: 'Nothing You Could Do', cursive;
+            font-size: 3em;
+            margin-bottom: 5px;
+            letter-spacing: 2px;
+            color: #fff;
+        } */
 
 
         h1 {
@@ -239,31 +239,43 @@ header h1 {
             document.getElementById('gracias').style.display = 'block';
         }
 
+
         function mostrarDiv() {
             const formulario = document.getElementById("miDiv");
             const confirmacion = document.getElementById("confirmacion");
 
+            if (!formulario || !confirmacion) return;
+
+            // Fade out confirmación
             confirmacion.style.transition = "opacity 0.4s ease";
-            confirmacion.style.opacity = 0;
+            confirmacion.style.opacity = "0";
 
             setTimeout(() => {
                 confirmacion.style.display = "none";
-                formulario.classList.add("visible");
-                formulario.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-                const primerInput = formulario.querySelector('input, select, textarea');
+                // Mostrar formulario
+                formulario.style.display = "block";
+                formulario.classList.add("visible");
+
+                // Scroll + foco
+                formulario.scrollIntoView({ behavior: "smooth", block: "start" });
+                const primerInput = formulario.querySelector("input, select, textarea");
                 if (primerInput) primerInput.focus();
             }, 400);
         }
 
-        window.addEventListener("load", () => {
+        document.addEventListener("DOMContentLoaded", () => {
             if (window.location.hash === "#gracias") {
-                document.getElementById("gracias").style.display = "block";
-                document.getElementById("confirmacion")?.style.display = "none";
-                document.getElementById("historia")?.style.display = "none";
-                document.getElementById("evento")?.style.display = "none";
-                document.getElementById("miDiv")?.style.display = "none";
-                document.getElementById("gracias").scrollIntoView({ behavior: "smooth" });
+                const gracias = document.getElementById("gracias");
+                if (!gracias) return;
+
+                // Ocultar secciones normales
+                document.getElementById("confirmacion")?.style.setProperty("display", "none");
+                document.getElementById("miDiv")?.style.setProperty("display", "none");
+
+                // Mostrar gracias
+                gracias.style.display = "block";
+                gracias.scrollIntoView({ behavior: "smooth", block: "start" });
             }
         });
     </script>
@@ -321,12 +333,9 @@ header h1 {
                 <p>Por favor, confírmanos antes del <strong>30 de agosto de 2026</strong></p>
 
                 <div class="form-wrapper">
-                    <form 
+                    <form
                         action="https://script.google.com/macros/s/AKfycbxrUfXvOmOxa1Vx9VuUmdZRdAbkzOBWlHQ3ONHaDsHHsz7oFmtAlF4vIT_Z8xZ6jnLerg/exec"
-                        method="POST"
-                        target="_self"
-                        onsubmit="mostrarGracias()"
-                    >
+                        method="POST" target="_self" onsubmit="mostrarGracias()">
                         <label for="nombre">Nombre y apellidos</label>
                         <input type="text" id="nombre" name="nombre" required>
 
