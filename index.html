@@ -233,66 +233,27 @@ header h1 {
     </style>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-
-            // Mostrar formulario con fade + scroll + foco
-            function mostrarDiv() {
-                const formulario = document.getElementById("miDiv");
-                const confirmacion = document.getElementById("confirmacion");
-
-                confirmacion.style.transition = "opacity 0.4s ease";
-                confirmacion.style.opacity = 0;
-
-                setTimeout(() => {
-                    confirmacion.style.display = "none";
-                    formulario.classList.add("visible");
-                    formulario.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-                    const primerInput = formulario.querySelector('input, select, textarea');
-                    if (primerInput) primerInput.focus();
-                }, 400);
-            }
-
-            // Hacemos la función accesible al onclick
-            window.mostrarDiv = mostrarDiv;
-
-            // FORMULARIO
-            const rsvpForm = document.getElementById('rsvpForm');
-
-            if (!rsvpForm) {
-                console.error('No se encontró el formulario.');
-                return;
-            }
-
-            rsvpForm.addEventListener('submit', function (e) {
-                e.preventDefault();
-
-                const formData = new FormData(rsvpForm);
-
-                fetch('https://script.google.com/macros/s/AKfycbyJKBQRZqsNhGnGiNXFs7u4-QqSe3JJufpzeC0Bx59BcBYRwZbMqrPhWmVqWTK8s1UZ9g/exec', {
-                    headers: {
-                        'Content-Type': 'text/plain;charset=utf-8',
-                    },
-                    body: JSON.stringify(formData),
-                    method: 'POST',
-                    redirect: 'follow',
-                })
-                    .then(response => response.text())
-                    .then(() => {
-                        document.getElementById('mensajeExito').style.display = 'block';
-                        rsvpForm.reset();
-                    })
-                    .catch(error => {
-                        alert('Error al enviar. Inténtalo de nuevo.');
-                        console.error(error);
-                    });
-            });
-
-        });
 
         function mostrarGracias() {
             document.querySelector('.form-wrapper').style.display = 'none';
             document.getElementById('gracias').style.display = 'block';
+        }
+
+        function mostrarDiv() {
+            const formulario = document.getElementById("miDiv");
+            const confirmacion = document.getElementById("confirmacion");
+
+            confirmacion.style.transition = "opacity 0.4s ease";
+            confirmacion.style.opacity = 0;
+
+            setTimeout(() => {
+                confirmacion.style.display = "none";
+                formulario.classList.add("visible");
+                formulario.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+                const primerInput = formulario.querySelector('input, select, textarea');
+                if (primerInput) primerInput.focus();
+            }, 400);
         }
 
         window.addEventListener("load", () => {
