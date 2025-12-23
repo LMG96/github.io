@@ -230,6 +230,16 @@
             max-height: 100%;
             /* suficientemente grande */
         }
+
+        #nombresAcompanantes input {
+            margin-bottom: 10px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 
     <script>
@@ -263,6 +273,34 @@
                 if (primerInput) primerInput.focus();
             }, 400);
         }
+
+          document.addEventListener("DOMContentLoaded", () => {
+            const inputAcompanantes = document.getElementById("acompanantes");
+            const contenedor = document.getElementById("nombresAcompanantes");
+
+            if (!inputAcompanantes || !contenedor) return;
+
+            inputAcompanantes.addEventListener("input", () => {
+            const cantidad = parseInt(inputAcompanantes.value) || 0;
+
+            // Limpiar campos previos
+            contenedor.innerHTML = "";
+
+            for (let i = 1; i <= cantidad; i++) {
+                const label = document.createElement("label");
+                label.textContent = `Nombre del acompañante ${i}`;
+
+                const input = document.createElement("input");
+                input.type = "text";
+                input.name = `acompanante_${i}`;
+                input.placeholder = `Nombre y apellidos`;
+                input.required = true;
+
+                contenedor.appendChild(label);
+                contenedor.appendChild(input);
+            }
+            });
+        });
 
         document.addEventListener("DOMContentLoaded", () => {
             if (window.location.hash === "#gracias") {
@@ -334,7 +372,7 @@
 
                 <div class="form-wrapper">
                     <form
-                        action="https://script.google.com/macros/s/AKfycbxrUfXvOmOxa1Vx9VuUmdZRdAbkzOBWlHQ3ONHaDsHHsz7oFmtAlF4vIT_Z8xZ6jnLerg/exec"
+                        action="https://script.google.com/macros/s/AKfycbzYp2igNeVuHIf2i2gxW_TFjvFjhQxC-YXbQ_N9JbkJvJu_kx0eb7coWfKTjq-zUtcszg/exec"
                         method="POST" target="_self" onsubmit="mostrarGracias()">
                         <label for="nombre">Nombre y apellidos</label>
                         <input type="text" id="nombre" name="nombre" required>
@@ -347,7 +385,9 @@
                         </select>
 
                         <label for="acompanantes">Número de acompañantes</label>
-                        <input type="number" id="acompanantes" name="acompanantes" min="1" value="1">
+                        <input type="number" id="acompanantes" name="acompanantes" min="0" value="0">
+
+                        <div id="nombresAcompanantes"></div>
 
                         <label for="autobus">Autobús (ida y/o vuelta)</label>
                         <select id="autobus" name="autobus">
