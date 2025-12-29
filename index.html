@@ -65,7 +65,14 @@
             letter-spacing: 2px;
         }
 
-        h2, i {
+        i {
+            font-family: 'Shadows into Light', sans;
+            margin-top: 40px;
+            margin-bottom: 10px;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+        h2 {
             font-family: 'Shadows into Light', sans;
             color: var(--color-principal);
             font-size: 2.8em;
@@ -310,7 +317,7 @@
     
     <div style="background-color: #fff;">
         <div id="historia" class="section">
-            <h2><i class="fa-solid fa-heart" style="border-bottom: none"></i> Nuestra Historia</h2>
+            <i class="fa-solid fa-heart" style="border-bottom: none; color: var(--color-principal)" ></i><h2> Nuestra Historia</h2>
             <p>Una breve descripción de cómo nos conocimos, nuestra propuesta, y por qué decidimos dar el paso. [¡Reemplaza
                 este texto con tu propia historia!]</p>
         </div>
@@ -323,10 +330,10 @@
     <div style="background-color: #f2f2f2">
         
         <div id="evento" class="section" >
-            <i class="fa-solid fa-calendar-day" style="border-bottom: none"></i><h2> Detalles del Evento</h2>
+            <i class="fa-solid fa-calendar-day" style="border-bottom: none;color: var(--color-principal)"></i><h2> Detalles del Evento</h2>
 
             <div class="lugar">
-                <h3><i class="fa-solid fa-church" style="border-bottom: none"></i> Ceremonia</h3>
+                <i class="fa-solid fa-church" style="border-bottom: none"></i><h3> Ceremonia</h3>
                 <p>
                     Hora: 12:00h<br>
                     Lugar: Ermita dels Sants de la Pedra<br>
@@ -348,7 +355,7 @@
     <!-- Botón Confirmar -->
     <div>
         <div id="confirmacion" class="section confirmacion">
-            <h2><i class="fa-solid fa-list-check" style="border-bottom: none"></i> Confirmación de Asistencia</h2>
+            <h2><i class="fa-solid fa-list-check" style="border-bottom: none;color: var(--color-principal)"></i> Confirmación de Asistencia</h2>
             <p>Por favor, confírmanos tu asistencia antes del 30 de agosto de 2026 para poder organizar todo.</p>
 
             <button type="button" onclick="mostrarDiv()"><a href="#form">Confirmar</a></button>
@@ -359,7 +366,7 @@
     <div id="miDiv" class="fade">
         <div class="container">
             <section>
-                <h2><i class="fa-solid fa-list-check" style="border-bottom: none"></i> Confirmación de Asistencia</h2>
+                <h2><i class="fa-solid fa-list-check" style="border-bottom: none; color: var(--color-principal)"></i> Confirmación de Asistencia</h2>
                 <p>Por favor, confírmanos antes del <strong>30 de agosto de 2026</strong></p>
 
                 <div class="form-wrapper">
@@ -420,7 +427,7 @@
 
 
     <div id="regaloCuenta" class="section">
-        <h2><i class="fa-solid fa-gift" style="border-bottom: none"></i> Regalo</h2>
+        <h2><i class="fa-solid fa-gift" style="border-bottom: none;color: var(--color-principal)"></i> Regalo</h2>
         <p>Si quieres tener un detalle con nosotros y no sabes qué regalarnos aquí una idea ¡Gracias!</p>
         <p style="font-weight: bold; margin-top: 20px;">ES76 0081 1196 3100 0138 3044</p>
     </div>
