@@ -414,20 +414,10 @@
 
 
     <script>
+
         let player;
+        let musicPlaying = false;
 
-        const volumeSlider = document.getElementById("volumeSlider");
-
-        if (volumeSlider) {
-            volumeSlider.addEventListener("input", () => {
-                if (player) {
-                    player.setVolume(volumeSlider.value);
-                }
-            });
-        }
-
-
-        // YouTube API
         function onYouTubeIframeAPIReady() {
             player = new YT.Player('player', {
                 height: '0',
@@ -439,51 +429,71 @@
                     modestbranding: 1,
                     loop: 1,
                     playlist: '0rSVQp4U7Zo'
+                },
+                events: {
+                    onReady: onPlayerReady
                 }
             });
         }
 
-        // Abrir invitación
-        function abrirInvitacion() {
-            const entrada = document.getElementById('entrada');
-            document.body.style.overflow = "auto";
-            entrada.style.opacity = 0;
-
-            setTimeout(() => {
-                entrada.style.display = 'none';
-
-                if (player) {
-                    player.playVideo();
-                    player.setVolume(40);
-                    musicPlaying = true;
-                    document.getElementById("musicIcon").textContent = "🔊";
-                }
-            }, 800);
+        function onPlayerReady() {
+            // Volumen inicial
+            const slider = document.getElementById("volumeSlider");
+            if (slider) {
+                player.setVolume(slider.value);
+            }
         }
-
-
-        let musicPlaying = true;
 
         function toggleMusic() {
             if (!player) return;
 
             const icon = document.getElementById("musicIcon");
-            const slider = document.getElementById("volumeSlider");
 
             if (musicPlaying) {
                 player.pauseVideo();
                 icon.textContent = "🔇";
-                slider.style.opacity = 0.3;
             } else {
                 player.playVideo();
                 icon.textContent = "🔊";
-                slider.style.opacity = 1;
             }
 
             musicPlaying = !musicPlaying;
         }
 
+        document.addEventListener("DOMContentLoaded", () => {
+            const slider = document.getElementById("volumeSlider");
 
+            if (!slider) {
+                console.warn("No se encontró el slider de volumen");
+                return;
+            }
+
+            slider.addEventListener("input", () => {
+                if (player) {
+                    player.setVolume(slider.value);
+                }
+            });
+        });
+
+        function abrirInvitacion() {
+            const entrada = document.getElementById('entrada');
+
+            entrada.style.opacity = 0;
+
+            setTimeout(() => {
+                entrada.style.display = 'none';
+                document.body.style.overflow = "auto";
+
+                if (player) {
+                    player.playVideo();
+                    player.setVolume(
+                        document.getElementById("volumeSlider").value
+                    );
+                    musicPlaying = true;
+                    document.getElementById("musicIcon").textContent = "🔊";
+                }
+            }, 800);
+        }
     </script>
     <script src="https://kit.fontawesome.com/4f48d5b122.js" crossorigin="anonymous"></script>
     <script>
