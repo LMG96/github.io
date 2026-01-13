@@ -32,7 +32,7 @@
 
         header {
             position: relative;
-            background-image: url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1a/76/35/d9/photo0jpg.jpg?w=1200&h=-1&s=1');
+            background-image: url('https://sergioariasfotografia.es/wp-content/uploads/2025/05/taller-fotografia-paisaje-albufera-valencia-01.jpg');
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
@@ -50,9 +50,9 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 200px;
+            height: 250px;
             /* altura del difuminado */
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, var(--color-fondo) 100%);
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, var(--color-fondo) 100%);
             pointer-events: none;
             /* no bloquea interacciones */
         }
@@ -320,21 +320,25 @@
             opacity: 0.4;
         }
 
-
-        #musicToggle {
+        #audioControl {
             position: fixed;
             top: 20px;
             right: 20px;
-            background: rgba(255, 255, 255, 0.9);
-            border: none;
-            border-radius: 50%;
-            width: 52px;
-            height: 52px;
-            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 10px 12px;
+            border-radius: 30px;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-            font-size: 1.4em;
             z-index: 9999;
-            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        #musicToggle {
+            background: none;
+            border: none;
+            font-size: 1.4em;
+            cursor: pointer;
         }
 
         #musicToggle:hover {
@@ -345,6 +349,40 @@
             transform: scale(0.95);
         }
 
+        #volumeControl {
+            position: fixed;
+            top: 78px;
+            right: 24px;
+            width: 60px;
+            opacity: 0.7;
+            z-index: 9999;
+        }
+
+        #volumeControl:hover {
+            opacity: 1;
+        }
+
+        #volumeSlider {
+            width: 90px;
+            cursor: pointer;
+            accent-color: #31496A;
+        }
+
+        /* Thumb */
+        #volumeSlider::-webkit-slider-thumb {
+            appearance: none;
+            width: 10px;
+            height: 10px;
+            background: #31496A;
+            border-radius: 50%;
+        }
+
+        #volumeSlider::-moz-range-thumb {
+            width: 10px;
+            height: 10px;
+            background: #31496A;
+            border-radius: 50%;
+        }
 
 
 
@@ -377,6 +415,17 @@
 
     <script>
         let player;
+
+        const volumeSlider = document.getElementById("volumeSlider");
+
+        if (volumeSlider) {
+            volumeSlider.addEventListener("input", () => {
+                if (player) {
+                    player.setVolume(volumeSlider.value);
+                }
+            });
+        }
+
 
         // YouTube API
         function onYouTubeIframeAPIReady() {
@@ -419,17 +468,21 @@
             if (!player) return;
 
             const icon = document.getElementById("musicIcon");
+            const slider = document.getElementById("volumeSlider");
 
             if (musicPlaying) {
                 player.pauseVideo();
                 icon.textContent = "🔇";
+                slider.style.opacity = 0.3;
             } else {
                 player.playVideo();
                 icon.textContent = "🔊";
+                slider.style.opacity = 1;
             }
 
             musicPlaying = !musicPlaying;
         }
+
 
     </script>
     <script src="https://kit.fontawesome.com/4f48d5b122.js" crossorigin="anonymous"></script>
@@ -572,7 +625,7 @@
             <br />
             <br />
             <p>Con gran alegría, os invitamos a celebrar nuestra boda</p>
-            <h1 style="color: #31496a;">Marta y Luis</h1>
+            <h1 style="color: #CED9E9;">Marta y Luis</h1>
             <p class="fecha">Sábado, 26 de Septiembre de 2026</p>
         </header>
 
@@ -626,6 +679,31 @@
                 </div>
             </div>
         </div>
+
+        <div id="cuenta-atras" class="section countdown-section">
+            <h2>Cuenta atrás</h2>
+            <p class="countdown-text">Faltan</p>
+
+            <div class="countdown">
+                <div class="time-box">
+                    <span id="days">0</span>
+                    <small>Días</small>
+                </div>
+                <div class="time-box">
+                    <span id="hours">0</span>
+                    <small>Horas</small>
+                </div>
+                <div class="time-box">
+                    <span id="minutes">0</span>
+                    <small>Minutos</small>
+                </div>
+                <div class="time-box">
+                    <span id="seconds">0</span>
+                    <small>Segundos</small>
+                </div>
+            </div>
+        </div>
+
 
         <!-- Botón Confirmar -->
         <div>
@@ -702,30 +780,6 @@
             <p>Nos hace mucha ilusión contar contigo.</p>
         </div>
 
-        <div id="cuenta-atras" class="section countdown-section">
-            <h2>Cuenta atrás</h2>
-            <p class="countdown-text">Faltan</p>
-
-            <div class="countdown">
-                <div class="time-box">
-                    <span id="days">0</span>
-                    <small>Días</small>
-                </div>
-                <div class="time-box">
-                    <span id="hours">0</span>
-                    <small>Horas</small>
-                </div>
-                <div class="time-box">
-                    <span id="minutes">0</span>
-                    <small>Minutos</small>
-                </div>
-                <div class="time-box">
-                    <span id="seconds">0</span>
-                    <small>Segundos</small>
-                </div>
-            </div>
-        </div>
-
         <div id="regaloCuenta" class="section">
             <i class="fa-solid fa-gift" style="border-bottom: none;color: var(--color-principal)"></i>
             <h2> Regalo</h2>
@@ -746,9 +800,15 @@
     </div>
 
     <div id="player"></div>
-    <button id="musicToggle" onclick="toggleMusic()" aria-label="Música">
-        <span id="musicIcon">🔊</span>
-    </button>
+
+    <div id="audioControl">
+        <button style="margin:0px; padding: 0px" id="musicToggle" onclick="toggleMusic()" aria-label="Música">
+            <span style="margin:0px" id="musicIcon">🔊</span>
+        </button>
+
+        <input style="margin:0px" type="range" min="0" max="100" value="40" id="volumeSlider" aria-label="Volumen" />
+    </div>
+
     <script src="https://www.youtube.com/iframe_api"></script>
 </body>
 
