@@ -74,6 +74,7 @@
             padding-bottom: 5px;
             font-size: 2.8em;
         }
+
         h2 {
             font-family: 'Shadows into Light', sans;
             color: var(--color-principal);
@@ -229,93 +230,208 @@
         }
 
         /* OVERLAY */
-#entrada {
-  position: fixed;
-  inset: 0;
-    background:    url('https://live.staticflickr.com/1948/30919476707_f91e49c8aa_b.jpg');
-  background-size: cover;
-  background-position: center;
-background-repeat: no-repeat;
-background-attachment: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  transition: opacity 0.8s ease;
-}
+        #entrada {
+            position: fixed;
+            inset: 0;
+            background: url('https://live.staticflickr.com/1948/30919476707_f91e49c8aa_b.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease;
+        }
 
-/* SOBRE */
-.sobre {
-  background: #ffffff;
-  padding: 30px 45px;
-  border-radius: 12px;
-  cursor: pointer;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.25);
-  text-align: center;
-  animation: flotar 2.5s ease-in-out infinite;
-}
+        /* SOBRE */
+        .sobre {
+            background: #ffffff;
+            padding: 30px 45px;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+            text-align: center;
+            animation: flotar 2.5s ease-in-out infinite;
+        }
 
-.icono-sobre {
-  font-size: 4rem;
-  margin-bottom: 15px;
-}
+        .icono-sobre {
+            font-size: 4rem;
+            margin-bottom: 15px;
+        }
 
-.sobre p {
-  font-family: 'Nothing You Could Do', cursive;
-  font-size: 1.6em;
-  color: #31496a;
-}
+        .sobre p {
+            font-family: 'Nothing You Could Do', cursive;
+            font-size: 1.6em;
+            color: #31496a;
+        }
 
-/* Animación suave */
-@keyframes flotar {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
+
+        .countdown-section {}
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+
+        .time-box {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 18px 16px;
+            min-width: 90px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+        }
+
+        .time-box span {
+            font-size: 2.2em;
+            font-weight: bold;
+            color: var(--color-principal);
+            transition: transform 0.25s ease, opacity 0.25s ease;
+            display: inline-block;
+            min-width: 2.5ch;
+            /* ancho para 2 dígitos */
+            text-align: center;
+            font-variant-numeric: tabular-nums
+        }
+
+        .time-box small {
+            font-family: 'Kalam', cursive;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .countdown-text {
+            font-family: 'Kalam', cursive;
+            font-size: 1.6em;
+            margin-bottom: 10px;
+        }
+
+        .countdown-date {
+            font-style: italic;
+            opacity: 0.7;
+        }
+
+        .time-box span.animar {
+            transform: translateY(-6px);
+            opacity: 0.4;
+        }
+
+
+        #musicToggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            width: 52px;
+            height: 52px;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            font-size: 1.4em;
+            z-index: 9999;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        #musicToggle:hover {
+            transform: scale(1.08);
+        }
+
+        #musicToggle:active {
+            transform: scale(0.95);
+        }
+
+
+
+
+        /* Animación suave */
+        @keyframes flotar {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-5px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(-5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 
 
-<script>
-let player;
+    <script>
+        let player;
 
-// YouTube API
-function onYouTubeIframeAPIReady() {
-  player = new YT.Player('player', {
-    height: '0',
-    width: '0',
-    videoId: '0rSVQp4U7Zo',
-    playerVars: {
-      autoplay: 0,
-      controls: 0,
-      modestbranding: 1,
-      loop: 1,
-      playlist: '0rSVQp4U7Zo'
-    }
-  });
-}
+        // YouTube API
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                height: '0',
+                width: '0',
+                videoId: '0rSVQp4U7Zo',
+                playerVars: {
+                    autoplay: 0,
+                    controls: 0,
+                    modestbranding: 1,
+                    loop: 1,
+                    playlist: '0rSVQp4U7Zo'
+                }
+            });
+        }
 
-// Abrir invitación
-function abrirInvitacion() {
+        // Abrir invitación
+        function abrirInvitacion() {
+            const entrada = document.getElementById('entrada');
 
-  document.body.style.overflow = "auto";
-  const entrada = document.getElementById('entrada');
+            entrada.style.opacity = 0;
 
-  entrada.style.opacity = 0;
+            setTimeout(() => {
+                entrada.style.display = 'none';
 
-  setTimeout(() => {
-    entrada.style.display = 'none';
+                if (player) {
+                    player.playVideo();
+                    player.setVolume(40);
+                    musicPlaying = true;
+                    document.getElementById("musicIcon").textContent = "🔊";
+                }
+            }, 800);
+        }
 
-    if (player) {
-      player.playVideo();
-      player.setVolume(40); // volumen suave
-    }
-  }, 800);
-}
-</script>
+
+        let musicPlaying = true;
+
+        function toggleMusic() {
+            if (!player) return;
+
+            const icon = document.getElementById("musicIcon");
+
+            if (musicPlaying) {
+                player.pauseVideo();
+                icon.textContent = "🔇";
+            } else {
+                player.playVideo();
+                icon.textContent = "🔊";
+            }
+
+            musicPlaying = !musicPlaying;
+        }
+
+    </script>
     <script src="https://kit.fontawesome.com/4f48d5b122.js" crossorigin="anonymous"></script>
     <script>
 
@@ -349,31 +465,31 @@ function abrirInvitacion() {
             }, 400);
         }
 
-          document.addEventListener("DOMContentLoaded", () => {
+        document.addEventListener("DOMContentLoaded", () => {
             const inputAcompanantes = document.getElementById("acompanantes");
             const contenedor = document.getElementById("nombresAcompanantes");
 
             if (!inputAcompanantes || !contenedor) return;
 
             inputAcompanantes.addEventListener("input", () => {
-            const cantidad = parseInt(inputAcompanantes.value) || 0;
+                const cantidad = parseInt(inputAcompanantes.value) || 0;
 
-            // Limpiar campos previos
-            contenedor.innerHTML = "";
+                // Limpiar campos previos
+                contenedor.innerHTML = "";
 
-            for (let i = 1; i <= cantidad; i++) {
-                const label = document.createElement("label");
-                label.textContent = `Nombre del acompañante ${i}`;
+                for (let i = 1; i <= cantidad; i++) {
+                    const label = document.createElement("label");
+                    label.textContent = `Nombre del acompañante ${i}`;
 
-                const input = document.createElement("input");
-                input.type = "text";
-                input.name = `acompanante_${i}`;
-                input.placeholder = `Nombre y apellidos`;
-                input.required = true;
+                    const input = document.createElement("input");
+                    input.type = "text";
+                    input.name = `acompanante_${i}`;
+                    input.placeholder = `Nombre y apellidos`;
+                    input.required = true;
 
-                contenedor.appendChild(label);
-                contenedor.appendChild(input);
-            }
+                    contenedor.appendChild(label);
+                    contenedor.appendChild(input);
+                }
             });
         });
 
@@ -392,161 +508,247 @@ function abrirInvitacion() {
             }
         });
     </script>
+
+    <script>
+        function actualizarNumero(id, nuevoValor) {
+            const el = document.getElementById(id);
+
+            if (el.textContent !== String(nuevoValor)) {
+                el.classList.add("animar");
+
+                setTimeout(() => {
+                    el.textContent = nuevoValor;
+                    el.classList.remove("animar");
+                }, 200);
+            }
+        }
+
+        function iniciarCuentaAtras() {
+            const fechaBoda = new Date("2026-09-26T12:00:00"); // ajusta hora si quieres
+
+            function actualizar() {
+                const ahora = new Date();
+                const diferencia = fechaBoda - ahora;
+
+                if (diferencia <= 0) {
+                    document.getElementById("cuenta-atras").innerHTML =
+                        "<h2>¡Hoy es el gran día! 💍</h2>";
+                    clearInterval(intervalo);
+                    return;
+                }
+
+                const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+                const horas = Math.floor((diferencia / (1000 * 60 * 60)) % 24);
+                const minutos = Math.floor((diferencia / (1000 * 60)) % 60);
+                const segundos = Math.floor((diferencia / 1000) % 60);
+
+                actualizarNumero("days", dias);
+                actualizarNumero("hours", horas);
+                actualizarNumero("minutes", minutos);
+                actualizarNumero("seconds", segundos);
+            }
+
+            actualizar();
+            const intervalo = setInterval(actualizar, 1000);
+        }
+
+        document.addEventListener("DOMContentLoaded", iniciarCuentaAtras);
+    </script>
+
 </head>
 
 <body>
 
     <!-- OVERLAY DE ENTRADA -->
-<div id="entrada">
-  <div class="sobre" onclick="abrirInvitacion()">
-<!--    <div class="icono-sobre">✉️</div> -->
-    <p>Abrir invitación</p>
-  </div>
-</div>
-<div class="todaPagina">
-
-    <header>
-        <br />
-        <br />
-        <p>Con gran alegría, os invitamos a celebrar nuestra boda</p>
-        <h1 style="color: #31496a;">Marta y Luis</h1>
-        <p class="fecha">Sábado, 26 de Septiembre de 2026</p>
-    </header>
-
-    
-    <div style="background-color: #fff;">
-        <div id="historia" class="section">
-            <i class="fa-solid fa-heart" style="border-bottom: none; color: var(--color-principal)" ></i><h2> Nuestra Historia</h2>
-            <p>
-                Nos conocimos siendo niños, entre juegos en la playa y veranos infinitos, sin saber que el destino ya nos estaba uniendo. 
-                Con los años, la amistad se transformó en miradas, besos de verano y un amor que fue creciendo paso a paso. 
-                La relación creció entre ilusión, convivencia y sueños compartidos, convirtiendo una casa en nuestro hogar.
-                Tras años de complicidad, ilusión y amor sincero, decidimos prometernos para siempre.
-            </p>
+    <div id="entrada">
+        <div class="sobre" onclick="abrirInvitacion()">
+            <!--    <div class="icono-sobre">✉️</div> -->
+            <p>Abrir invitación</p>
         </div>
     </div>
-    
-    <div style="background-size: 100% 100px;height: 100px;background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDBweCIgdmlld0JveD0iMCAwIDEyODAgMTQwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIGZpbGw9IiNmZmZmZmYiPjxwYXRoIGQ9Ik0wIDB2LjQ4QzE4LjYyIDkuMzggMjk3LjgxIDE0MCA2MzkuNSAxNDAgOTkzLjI0IDE0MCAxMjgwIDAgMTI4MCAweiIgZmlsbC1vcGFjaXR5PSIuMyIvPjxwYXRoIGQ9Ik0wIC42YzE0IDguMjggMTc2LjU0IDk5LjggNTU1LjQ1IDExOS4xNEM5NTIuNDEgMTQwIDEyODAgMCAxMjgwIDBIMHoiIGZpbGwtb3BhY2l0eT0iLjUiLz48cGF0aCBkPSJNNzI2LjI5IDEwMS4yQzExMjYuMzYgNzkuOTIgMTI4MSAwIDEyODEgMEgxYy4wNSAwIDMyNS4yNSAxMjIuNDggNzI1LjI5IDEwMS4yeiIvPjwvZz48L3N2Zz4=);">
+    <div class="todaPagina">
 
-    </div>
+        <header>
+            <br />
+            <br />
+            <p>Con gran alegría, os invitamos a celebrar nuestra boda</p>
+            <h1 style="color: #31496a;">Marta y Luis</h1>
+            <p class="fecha">Sábado, 26 de Septiembre de 2026</p>
+        </header>
 
-    <div style="background-color: #f2f2f2">
-        
-        <div id="evento" class="section" >
-            <i class="fa-solid fa-calendar-day" style="border-bottom: none;color: var(--color-principal)"></i><h2> Evento</h2>
 
-            <div class="lugar">
-                <h3><i class="fa-solid fa-church" style="border-bottom: none; font-size: 1.5em;"></i> Ceremonia</h3>
+        <div style="background-color: #fff;">
+            <div id="historia" class="section">
+                <i class="fa-solid fa-heart" style="border-bottom: none; color: var(--color-principal)"></i>
+                <h2> Nuestra Historia</h2>
                 <p>
-                    Hora: 12:00h<br>
-                    Lugar: Ermita dels Sants de la Pedra<br>
-                    <i class="fa-solid fa-map-pin" style="border-bottom: none; font-size: 1.4em;"></i><a href="https://maps.app.goo.gl/Qkh9CPi93UWmje337" target="_blank"> Ver en mapa</a>
-                </p>
-            </div>
-
-            <div class="lugar">
-                <h3><i class="fa-solid fa-champagne-glasses" style="border-bottom: none; font-size: 1.5em;"></i> Recepción y Fiesta</h3>
-                <p>
-                    Hora: 14:30h<br>
-                    Lugar: Nou Racó en El Palmar<br>
-                    <i class="fa-solid fa-map-pin" style="border-bottom: none; font-size: 1.4em;"></i><a href="https://maps.app.goo.gl/AstdxZe5Nk37t3Qi7" target="_blank"> Ver en mapa</a>
+                    Nos conocimos siendo niños, entre juegos en la playa y veranos infinitos, sin saber que el destino
+                    ya nos estaba uniendo.
+                    Con los años, la amistad se transformó en miradas, besos de verano y un amor que fue creciendo paso
+                    a paso.
+                    La relación creció entre ilusión, convivencia y sueños compartidos, convirtiendo una casa en nuestro
+                    hogar.
+                    Tras años de complicidad, ilusión y amor sincero, decidimos prometernos para siempre.
                 </p>
             </div>
         </div>
-    </div>
 
-    <!-- Botón Confirmar -->
-    <div>
-        <div id="confirmacion" class="section confirmacion">
-            <i class="fa-solid fa-list-check" style="border-bottom: none;color: var(--color-principal)"></i><h2> Asistencia</h2>
-            <p>Por favor, confírmanos tu asistencia antes del 30 de agosto de 2026 para poder organizar todo.</p>
+        <div
+            style="background-size: 100% 100px;height: 100px;background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDBweCIgdmlld0JveD0iMCAwIDEyODAgMTQwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIGZpbGw9IiNmZmZmZmYiPjxwYXRoIGQ9Ik0wIDB2LjQ4QzE4LjYyIDkuMzggMjk3LjgxIDE0MCA2MzkuNSAxNDAgOTkzLjI0IDE0MCAxMjgwIDAgMTI4MCAweiIgZmlsbC1vcGFjaXR5PSIuMyIvPjxwYXRoIGQ9Ik0wIC42YzE0IDguMjggMTc2LjU0IDk5LjggNTU1LjQ1IDExOS4xNEM5NTIuNDEgMTQwIDEyODAgMCAxMjgwIDBIMHoiIGZpbGwtb3BhY2l0eT0iLjUiLz48cGF0aCBkPSJNNzI2LjI5IDEwMS4yQzExMjYuMzYgNzkuOTIgMTI4MSAwIDEyODEgMEgxYy4wNSAwIDMyNS4yNSAxMjIuNDggNzI1LjI5IDEwMS4yeiIvPjwvZz48L3N2Zz4=);">
 
-            <button type="button" onclick="mostrarDiv()"><a href="#form">Confirmar</a></button>
         </div>
-    </div>
-    
-    <!-- Formulario RSVP -->
-    <div id="miDiv" class="fade">
-        <div class="container">
-            <section>
-                <i class="fa-solid fa-list-check" style="border-bottom: none; color: var(--color-principal)"></i><h2> Asistencia</h2>
-                <p>Por favor, confírmanos antes del <strong>30 de agosto de 2026</strong></p>
 
-                <div class="form-wrapper">
-                    <form
-                        action="https://script.google.com/macros/s/AKfycbwuFcPzdO8iZ53rsfKAy7HVDxFwKc8ROp9nTGn3x_pp_VSX_EOBf8AZHM3qUjfbLi8aSg/exec"
-                        method="POST" target="hiddenFrame" onsubmit="mostrarGracias()">
-                        <label for="nombre">Nombre y apellidos</label>
-                        <input type="text" id="nombre" name="nombre" required>
+        <div style="background-color: #f2f2f2">
 
-                        <label for="asistencia">¿Vas a asistir?</label>
-                        <select id="asistencia" name="asistencia" required>
-                            <option value="">Selecciona</option>
-                            <option value="si">Sí, asistiré</option>
-                            <option value="no">No podré asistir</option>
-                        </select>
+            <div id="evento" class="section">
+                <i class="fa-solid fa-calendar-day" style="border-bottom: none;color: var(--color-principal)"></i>
+                <h2> Evento</h2>
 
-                        <label for="acompanantes">Número de acompañantes</label>
-                        <input type="number" id="acompanantes" name="acompanantes" min="0" value="0">
-
-                        <div id="nombresAcompanantes"></div>
-
-                        <label for="autobus">Autobús (ida y/o vuelta)</label>
-                        <select id="autobus" name="autobus">
-                            <option value="ninguno">No necesito autobús</option>
-                            <option value="ida">Solo ida</option>
-                            <option value="vuelta">Solo vuelta</option>
-                            <option value="ida_vuelta">Ida y vuelta</option>
-                        </select>
-
-                        <label for="menu">Preferencias de menú / alergias</label>
-                        <textarea id="menu" name="menu" rows="3"
-                            placeholder="Ej. vegetariano, celíaco, intolerancias..."></textarea>
-
-                        <label for="top3">TOP 3 musical</label>
-                        <div class="grid-container">
-                            <input type="text" name="top1" style="margin-right:4px;">
-                            <input type="text" name="top2" style="margin-right:4px;">
-                            <input type="text" name="top3">
-                        </div>
-
-                        <label for="mensaje">Mensaje para nosotros</label>
-                        <textarea id="mensaje" name="mensaje" rows="3"></textarea>
-
-                        <button type="submit">Enviar Confirmación</button>
-                    </form>
+                <div class="lugar">
+                    <h3><i class="fa-solid fa-church" style="border-bottom: none; font-size: 1.5em;"></i> Ceremonia</h3>
+                    <p>
+                        Hora: 12:00h<br>
+                        Lugar: Ermita dels Sants de la Pedra<br>
+                        <i class="fa-solid fa-map-pin" style="border-bottom: none; font-size: 1.4em;"></i><a
+                            href="https://maps.app.goo.gl/Qkh9CPi93UWmje337" target="_blank"> Ver en mapa</a>
+                    </p>
                 </div>
-            </section>
+
+                <div class="lugar">
+                    <h3><i class="fa-solid fa-champagne-glasses" style="border-bottom: none; font-size: 1.5em;"></i>
+                        Recepción y Fiesta</h3>
+                    <p>
+                        Hora: 14:30h<br>
+                        Lugar: Nou Racó en El Palmar<br>
+                        <i class="fa-solid fa-map-pin" style="border-bottom: none; font-size: 1.4em;"></i><a
+                            href="https://maps.app.goo.gl/AstdxZe5Nk37t3Qi7" target="_blank"> Ver en mapa</a>
+                    </p>
+                </div>
+            </div>
         </div>
+
+        <!-- Botón Confirmar -->
+        <div>
+            <div id="confirmacion" class="section confirmacion">
+                <i class="fa-solid fa-list-check" style="border-bottom: none;color: var(--color-principal)"></i>
+                <h2> Asistencia</h2>
+                <p>Por favor, confírmanos tu asistencia antes del 30 de agosto de 2026 para poder organizar todo.</p>
+
+                <button type="button" onclick="mostrarDiv()"><a href="#form">Confirmar</a></button>
+            </div>
+        </div>
+
+        <!-- Formulario RSVP -->
+        <div id="miDiv" class="fade">
+            <div class="container">
+                <section>
+                    <i class="fa-solid fa-list-check" style="border-bottom: none; color: var(--color-principal)"></i>
+                    <h2> Asistencia</h2>
+                    <p>Por favor, confírmanos antes del <strong>30 de agosto de 2026</strong></p>
+
+                    <div class="form-wrapper">
+                        <form
+                            action="https://script.google.com/macros/s/AKfycbwuFcPzdO8iZ53rsfKAy7HVDxFwKc8ROp9nTGn3x_pp_VSX_EOBf8AZHM3qUjfbLi8aSg/exec"
+                            method="POST" target="hiddenFrame" onsubmit="mostrarGracias()">
+                            <label for="nombre">Nombre y apellidos</label>
+                            <input type="text" id="nombre" name="nombre" required>
+
+                            <label for="asistencia">¿Vas a asistir?</label>
+                            <select id="asistencia" name="asistencia" required>
+                                <option value="">Selecciona</option>
+                                <option value="si">Sí, asistiré</option>
+                                <option value="no">No podré asistir</option>
+                            </select>
+
+                            <label for="acompanantes">Número de acompañantes</label>
+                            <input type="number" id="acompanantes" name="acompanantes" min="0" value="0">
+
+                            <div id="nombresAcompanantes"></div>
+
+                            <label for="autobus">Autobús (ida y/o vuelta)</label>
+                            <select id="autobus" name="autobus">
+                                <option value="ninguno">No necesito autobús</option>
+                                <option value="ida">Solo ida</option>
+                                <option value="vuelta">Solo vuelta</option>
+                                <option value="ida_vuelta">Ida y vuelta</option>
+                            </select>
+
+                            <label for="menu">Preferencias de menú / alergias</label>
+                            <textarea id="menu" name="menu" rows="3"
+                                placeholder="Ej. vegetariano, celíaco, intolerancias..."></textarea>
+
+                            <label for="top3">TOP 3 musical</label>
+                            <div class="grid-container">
+                                <input type="text" name="top1" style="margin-right:4px;">
+                                <input type="text" name="top2" style="margin-right:4px;">
+                                <input type="text" name="top3">
+                            </div>
+
+                            <label for="mensaje">Mensaje para nosotros</label>
+                            <textarea id="mensaje" name="mensaje" rows="3"></textarea>
+
+                            <button type="submit">Enviar Confirmación</button>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <div id="gracias" style="display:none;" class="section">
+            <iframe name="hiddenFrame" style="display:none;"></iframe>
+
+            <h2>💙 ¡Gracias!</h2>
+            <p>Hemos recibido tu confirmación correctamente.</p>
+            <p>Nos hace mucha ilusión contar contigo.</p>
+        </div>
+
+        <div id="cuenta-atras" class="section countdown-section">
+            <h2>Cuenta atrás</h2>
+            <p class="countdown-text">Faltan</p>
+
+            <div class="countdown">
+                <div class="time-box">
+                    <span id="days">0</span>
+                    <small>Días</small>
+                </div>
+                <div class="time-box">
+                    <span id="hours">0</span>
+                    <small>Horas</small>
+                </div>
+                <div class="time-box">
+                    <span id="minutes">0</span>
+                    <small>Minutos</small>
+                </div>
+                <div class="time-box">
+                    <span id="seconds">0</span>
+                    <small>Segundos</small>
+                </div>
+            </div>
+        </div>
+
+        <div id="regaloCuenta" class="section">
+            <i class="fa-solid fa-gift" style="border-bottom: none;color: var(--color-principal)"></i>
+            <h2> Regalo</h2>
+            <p>Si quieres tener un detalle con nosotros y no sabes qué regalarnos aquí una idea ¡Gracias!</p>
+            <p style="font-weight: bold; margin-top: 20px;">ES76 0081 1196 3100 0138 3044</p>
+        </div>
+
+        <div
+            style="transform: rotateX(180deg); background-size: 100% 100px;height: 100px;background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDBweCIgdmlld0JveD0iMCAwIDEyODAgMTQwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIGZpbGw9IiNmZmZmZmYiPjxwYXRoIGQ9Ik0wIDB2LjQ4QzE4LjYyIDkuMzggMjk3LjgxIDE0MCA2MzkuNSAxNDAgOTkzLjI0IDE0MCAxMjgwIDAgMTI4MCAweiIgZmlsbC1vcGFjaXR5PSIuMyIvPjxwYXRoIGQ9Ik0wIC42YzE0IDguMjggMTc2LjU0IDk5LjggNTU1LjQ1IDExOS4xNEM5NTIuNDEgMTQwIDEyODAgMCAxMjgwIDBIMHoiIGZpbGwtb3BhY2l0eT0iLjUiLz48cGF0aCBkPSJNNzI2LjI5IDEwMS4yQzExMjYuMzYgNzkuOTIgMTI4MSAwIDEyODEgMEgxYy4wNSAwIDMyNS4yNSAxMjIuNDggNzI1LjI5IDEwMS4yeiIvPjwvZz48L3N2Zz4=);">
+
+        </div>
+
+
+        <footer>
+            <p>&copy; Marta y Luis | ¡Gracias por ser parte de nuestra historia!</p>
+        </footer>
+
     </div>
 
-    <div id="gracias" style="display:none;" class="section">
-        <iframe name="hiddenFrame" style="display:none;"></iframe>
-
-        <h2>💙 ¡Gracias!</h2>
-        <p>Hemos recibido tu confirmación correctamente.</p>
-        <p>Nos hace mucha ilusión contar contigo.</p>
-    </div>
-
-
-    <div id="regaloCuenta" class="section">
-        <i class="fa-solid fa-gift" style="border-bottom: none;color: var(--color-principal)"></i><h2> Regalo</h2>
-        <p>Si quieres tener un detalle con nosotros y no sabes qué regalarnos aquí una idea ¡Gracias!</p>
-        <p style="font-weight: bold; margin-top: 20px;">ES76 0081 1196 3100 0138 3044</p>
-    </div>
-
-    <div style="transform: rotateX(180deg); background-size: 100% 100px;height: 100px;background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDBweCIgdmlld0JveD0iMCAwIDEyODAgMTQwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIGZpbGw9IiNmZmZmZmYiPjxwYXRoIGQ9Ik0wIDB2LjQ4QzE4LjYyIDkuMzggMjk3LjgxIDE0MCA2MzkuNSAxNDAgOTkzLjI0IDE0MCAxMjgwIDAgMTI4MCAweiIgZmlsbC1vcGFjaXR5PSIuMyIvPjxwYXRoIGQ9Ik0wIC42YzE0IDguMjggMTc2LjU0IDk5LjggNTU1LjQ1IDExOS4xNEM5NTIuNDEgMTQwIDEyODAgMCAxMjgwIDBIMHoiIGZpbGwtb3BhY2l0eT0iLjUiLz48cGF0aCBkPSJNNzI2LjI5IDEwMS4yQzExMjYuMzYgNzkuOTIgMTI4MSAwIDEyODEgMEgxYy4wNSAwIDMyNS4yNSAxMjIuNDggNzI1LjI5IDEwMS4yeiIvPjwvZz48L3N2Zz4=);">
-
-    </div>
-    
-
-    <footer>
-        <p>&copy; Marta y Luis | ¡Gracias por ser parte de nuestra historia!</p>
-    </footer>
-
-</div>
-    
     <div id="player"></div>
+    <button id="musicToggle" onclick="toggleMusic()" aria-label="Música">
+        <span id="musicIcon">🔊</span>
+    </button>
     <script src="https://www.youtube.com/iframe_api"></script>
 </body>
 
