@@ -34,14 +34,23 @@
             position: relative;
             background-image: url('https://sergioariasfotografia.es/wp-content/uploads/2025/05/taller-fotografia-paisaje-albufera-valencia-01.jpg');
             background-repeat: no-repeat;
-            background-attachment: fixed;
             background-size: cover;
+            background-position: center;
             color: white;
             padding: 60px 20px;
-            font-size: 1.2em;
-            text-align: center;
-            overflow: hidden;
             height: 24em;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                background-image: url('https://sergioariasfotografia.es/wp-content/uploads/2025/05/taller-fotografia-paisaje-albufera-valencia-01.jpg');
+                background-attachment: scroll; /* MUY IMPORTANTE */
+                min-height: 70vh;
+                height: auto;
+            }
+            #entrada {
+                background-attachment: scroll;
+            }
         }
 
         header::after {
