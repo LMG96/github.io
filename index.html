@@ -455,11 +455,26 @@
             background-position: center;
         }
 
-        #evento {
+        .evento {
             background: url('https://media-public.canva.com/hhHzk/MAEp3YhhHzk/1/tl.png');
             background-repeat: no-repeat;
             background-size: 30%;
         }
+
+        .fondoFloral {
+            background: url('https://media-public.canva.com/hhHzk/MAEp3YhhHzk/1/tl.png');
+            background-repeat: no-repeat;
+            background-size: 30%;
+            background-position: 100% 100%;
+        }
+
+        .fondoFloral2 {
+            background: url('https://media-public.canva.com/hhHzk/MAEp3YhhHzk/1/tl.png');
+            background-repeat: no-repeat;
+            background-size: 30%;
+            background-position: 100% 0%;
+        }
+
 /*
         #miDiv {
             background: url('https://media-public.canva.com/V8oP4/MAE4adV8oP4/1/tl.png');
@@ -996,58 +1011,63 @@
 
             <div>
 
-                <div id="evento" class="section">
-                    <i class="fa-solid fa-calendar-day" style="border-bottom: none;color: var(--color-principal)"></i>
-                    <h2> Evento</h2>
+                <div class="section evento">
+                    <div class="fondoFloral">                    
+                        <i class="fa-solid fa-calendar-day" style="border-bottom: none;color: var(--color-principal)"></i>
+                        <h2> Evento</h2>
 
-                    <div class="lugar">
-                        <h3><i class="fa-solid fa-church" style="border-bottom: none; font-size: 1.5em;"></i> Ceremonia
-                        </h3>
-                        <p>
-                            Hora: 12:00h<br>
-                            Lugar: Ermita dels Sants de la Pedra<br>
-                            <i class="fa-solid fa-map-pin" style="border-bottom: none; font-size: 1.4em;"></i><a
-                                href="https://maps.app.goo.gl/Qkh9CPi93UWmje337" target="_blank"> Ver en mapa</a>
-                        </p>
-                    </div>
+                        <div class="lugar">
+                            <h3><i class="fa-solid fa-church" style="border-bottom: none; font-size: 1.5em;"></i> Ceremonia
+                            </h3>
+                            <p>
+                                Hora: 12:00h<br>
+                                Lugar: Ermita dels Sants de la Pedra<br>
+                                <i class="fa-solid fa-map-pin" style="border-bottom: none; font-size: 1.4em;"></i><a
+                                    href="https://maps.app.goo.gl/Qkh9CPi93UWmje337" target="_blank"> Ver en mapa</a>
+                            </p>
+                        </div>
 
-                    <div class="lugar">
-                        <h3><i class="fa-solid fa-champagne-glasses" style="border-bottom: none; font-size: 1.5em;"></i>
-                            Recepción y Fiesta</h3>
-                        <p>
-                            Hora: 14:30h<br>
-                            Lugar: Nou Racó en El Palmar<br>
-                            <i class="fa-solid fa-map-pin" style="border-bottom: none; font-size: 1.4em;"></i><a
-                                href="https://maps.app.goo.gl/AstdxZe5Nk37t3Qi7" target="_blank"> Ver en mapa</a>
-                        </p>
+                        <div class="lugar">
+                            <h3><i class="fa-solid fa-champagne-glasses" style="border-bottom: none; font-size: 1.5em;"></i>
+                                Recepción y Fiesta</h3>
+                            <p>
+                                Hora: 14:30h<br>
+                                Lugar: Nou Racó en El Palmar<br>
+                                <i class="fa-solid fa-map-pin" style="border-bottom: none; font-size: 1.4em;"></i><a
+                                    href="https://maps.app.goo.gl/AstdxZe5Nk37t3Qi7" target="_blank"> Ver en mapa</a>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div id="cuenta-atras" class="section countdown-section">
-                <i class="fa-solid fa-clock-rotate-left" style="border-bottom: none;color: var(--color-principal)"></i>
-                <h2>Cuenta atrás</h2>
-                <p class="countdown-text">Faltan</p>
+            <div>
+                <div id="cuenta-atras" class="section countdown-section evento">
+                    <i class="fa-solid fa-clock-rotate-left" style="border-bottom: none;color: var(--color-principal)"></i>
+                    <h2>Cuenta atrás</h2>
+                    <p class="countdown-text">Faltan</p>
 
-                <div class="countdown">
-                    <div class="time-box">
-                        <span id="days">0</span>
-                        <small>Días</small>
-                    </div>
-                    <div class="time-box">
-                        <span id="hours">0</span>
-                        <small>Horas</small>
-                    </div>
-                    <div class="time-box">
-                        <span id="minutes">0</span>
-                        <small>Minutos</small>
-                    </div>
-                    <div class="time-box">
-                        <span id="seconds">0</span>
-                        <small>Segundos</small>
+                    <div class="countdown">
+                        <div class="time-box">
+                            <span id="days">0</span>
+                            <small>Días</small>
+                        </div>
+                        <div class="time-box">
+                            <span id="hours">0</span>
+                            <small>Horas</small>
+                        </div>
+                        <div class="time-box">
+                            <span id="minutes">0</span>
+                            <small>Minutos</small>
+                        </div>
+                        <div class="time-box">
+                            <span id="seconds">0</span>
+                            <small>Segundos</small>
+                        </div>
                     </div>
                 </div>
             </div>
+            
 
 
             <!-- Botón Confirmar -->
@@ -1127,7 +1147,7 @@
                 <p>Nos hace mucha ilusión contar contigo.</p>
             </div>
 
-            <div id="regaloCuenta" class="section regalo-destino">
+            <div id="regaloCuenta" class="section regalo-destino fondoFloral2">
                 <i class="fa-regular fa-moon" style="color: var(--color-principal)"></i><h2> Nuestra Luna de Miel</h2>
 
             <!--    <div class="regalo-images">
