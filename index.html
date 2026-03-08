@@ -1,4 +1,4 @@
-0<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -535,12 +535,53 @@
         }
 
         .regalo-cuenta {
-            font-size: 1.7em;
+            font-size: 1.5em;
             font-weight: bold;
             color: var(--color-principal);
             margin-top: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: 1px;
+            white-space: nowrap;
+            cursor: pointer;
+            position: relative;
         }
 
+        .regalo-cuenta:hover {
+            opacity: 0.8;
+        }
+
+        .copy-icon {
+            font-size: 0.9em;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .regalo-cuenta:hover .copy-icon {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        #mensaje-copiado {
+            position: relative;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #31496a;
+            color: white;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        #mensaje-copiado.show {
+            opacity: 1;
+        }
 
         .carousel {
             position: relative;
@@ -630,6 +671,45 @@
         .carousel-dot.active {
             background: #31496a;
             transform: scale(1.3);
+        }
+
+        #petals-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .petal {
+            position: absolute;
+            top: -50px;
+            width: 440px;
+            height: 440px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            pointer-events: none;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translate(0,-50px) rotate(0deg);
+                opacity: 0.9;
+            }
+
+            50% {
+                transform: translate(40px,50vh) rotate(180deg);
+            }
+
+            100% {
+                transform: translate(-40px,110vh) rotate(360deg);
+                opacity: 0.4;
+            }
         }
 
         @media (max-width: 768px) {
@@ -963,11 +1043,76 @@
         }
 
         document.addEventListener("DOMContentLoaded", iniciarCuentaAtras);
-    </script>
+
+        function createPetal() {
+            const container = document.getElementById("petals-container");
+            if (!container) return;
+
+            const petal = document.createElement("div");
+            petal.classList.add("petal");
+
+            const petals = ["url('https://raw.githubusercontent.com/LMG96/github.io/refs/heads/main/luismolon-Photoroom%20(1).png')","url('https://raw.githubusercontent.com/LMG96/github.io/refs/heads/main/martunemolona-Photoroom.png')"];
+            
+            petal.style.backgroundImage = petals[Math.floor(Math.random()*petals.length)];
+
+            https://github.com/LMG96/github.io/blob/main/martunemolona-Photoroom.png
+
+            petal.style.left = Math.random() * 100 + "vw";
+            petal.style.animationDuration = (6 + Math.random() * 6) + "s";
+
+            const size = 50 + Math.random() * 15;
+            petal.style.width = size + "px";
+            petal.style.height = size + "px";
+
+            container.appendChild(petal);
+
+            setTimeout(() => {
+                petal.remove();
+            }, 12000);
+    }
+
+    setInterval(createPetal, 900);
+
+    function copiarCuenta() {
+
+        const cuenta = "ES7600811196310001383044";
+
+        navigator.clipboard.writeText(cuenta).then(() => {
+            mostrarMensaje();
+        }).catch(() => {
+
+            // fallback para navegadores antiguos
+            const textarea = document.createElement("textarea");
+            textarea.value = cuenta;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand("copy");
+            textarea.remove();
+
+            mostrarMensaje();
+        });
+
+    }
+
+    function mostrarMensaje(){
+
+        const mensaje = document.getElementById("mensaje-copiado");
+
+        mensaje.classList.add("show");
+
+        setTimeout(() => {
+            mensaje.classList.remove("show");
+        }, 2000);
+
+    }
+
+</script>
+    
 
 </head>
 
 <body>
+    <div id="petals-container"></div>
 
     <!-- OVERLAY DE ENTRADA -->
     <div id="entrada">
@@ -1049,19 +1194,19 @@
 
                     <div class="countdown">
                         <div class="time-box">
-                            <span id="days">0</span>
+                            <span id="days"></span>
                             <small>Días</small>
                         </div>
                         <div class="time-box">
-                            <span id="hours">0</span>
+                            <span id="hours"></span>
                             <small>Horas</small>
                         </div>
                         <div class="time-box">
-                            <span id="minutes">0</span>
+                            <span id="minutes"></span>
                             <small>Minutos</small>
                         </div>
                         <div class="time-box">
-                            <span id="seconds">0</span>
+                            <span id="seconds"></span>
                             <small>Segundos</small>
                         </div>
                     </div>
@@ -1085,7 +1230,7 @@
             <!-- Formulario RSVP -->
             <div id="miDiv" class="fade">
                 <div class="container">
-                    <section>
+                    <section style="height: 1035px;">
                         <i class="fa-solid fa-list-check"
                             style="border-bottom: none; color: var(--color-principal)"></i>
                         <h2> Asistencia</h2>
@@ -1201,12 +1346,22 @@
                     Si quieres colaborar con una parte de nuestra experiencia de viaje, puedes hacernos una transferencia a la siguiente cuenta:
                 </p>
 
-                <i class="fa-regular fa-credit-card" style="border-bottom: none;color: var(--color-principal)"></i> <p class="regalo-cuenta"><strong>ES76 0081 1196 3100 0138 3044</strong></p>
+                <div>
+                    <i class="fa-regular fa-credit-card" style="border-bottom: none;color: var(--color-principal)"></i> 
+                    <div onclick="copiarCuenta()">
+                        <p class="regalo-cuenta">
+                            <strong>ES76 0081 1196 3100 0138 3044</strong>
+                        </p>
+                        <i class="fa-regular fa-copy copy-icon"></i>
+                    </div>
+
+                    <div id="mensaje-copiado">Cuenta copiada ✓</div>
+                </div>
+                
             </div>
 
             <div
                 style="transform: rotateX(180deg); background-size: 100% 100px;height: 100px;background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDBweCIgdmlld0JveD0iMCAwIDEyODAgMTQwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIGZpbGw9IiNmZmZmZmYiPjxwYXRoIGQ9Ik0wIDB2LjQ4QzE4LjYyIDkuMzggMjk3LjgxIDE0MCA2MzkuNSAxNDAgOTkzLjI0IDE0MCAxMjgwIDAgMTI4MCAweiIgZmlsbC1vcGFjaXR5PSIuMyIvPjxwYXRoIGQ9Ik0wIC42YzE0IDguMjggMTc2LjU0IDk5LjggNTU1LjQ1IDExOS4xNEM5NTIuNDEgMTQwIDEyODAgMCAxMjgwIDBIMHoiIGZpbGwtb3BhY2l0eT0iLjUiLz48cGF0aCBkPSJNNzI2LjI5IDEwMS4yQzExMjYuMzYgNzkuOTIgMTI4MSAwIDEyODEgMEgxYy4wNSAwIDMyNS4yNSAxMjIuNDggNzI1LjI5IDEwMS4yeiIvPjwvZz48L3N2Zz4=);">
-
             </div>
 
         </div>
