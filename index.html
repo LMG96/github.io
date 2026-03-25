@@ -1043,34 +1043,36 @@
 
         document.addEventListener("DOMContentLoaded", iniciarCuentaAtras);
 
-        function createPetal() {
-            const container = document.getElementById("petals-container");
-            if (!container) return;
 
-            const petal = document.createElement("div");
-            petal.classList.add("petal");
+    function createPetal() {
+        const container = document.getElementById("petals-container");
+        if (!container) return;
 
-            const petals = ["url('https://raw.githubusercontent.com/LMG96/github.io/refs/heads/main/luismolon-Photoroom%20(1).png')","url('https://raw.githubusercontent.com/LMG96/github.io/refs/heads/main/martunemolona-Photoroom.png')"];
-            
-            petal.style.backgroundImage = petals[Math.floor(Math.random()*petals.length)];
+        const petal = document.createElement("div");
+        petal.classList.add("petal");
 
-            https://github.com/LMG96/github.io/blob/main/martunemolona-Photoroom.png
+        const petals = ["url('https://raw.githubusercontent.com/LMG96/github.io/refs/heads/main/luismolon-Photoroom%20(1).png')","url('https://raw.githubusercontent.com/LMG96/github.io/refs/heads/main/martunemolona-Photoroom.png')"];
+        
+        petal.style.backgroundImage = petals[Math.floor(Math.random()*petals.length)];
+        petal.style.left = Math.random() * 100 + "vw";
+        petal.style.animationDuration = (6 + Math.random() * 6) + "s";
 
-            petal.style.left = Math.random() * 100 + "vw";
-            petal.style.animationDuration = (6 + Math.random() * 6) + "s";
+        const size = 50 + Math.random() * 15;
+        petal.style.width = size + "px";
+        petal.style.height = size + "px";
 
-            const size = 50 + Math.random() * 15;
-            petal.style.width = size + "px";
-            petal.style.height = size + "px";
+        container.appendChild(petal);
 
-            container.appendChild(petal);
-
-            setTimeout(() => {
-                petal.remove();
-            }, 12000);
+        setTimeout(() => {
+            petal.remove();
+        }, 12000);
     }
 
-    setInterval(createPetal, 1000);
+    const intervaloPetalos = setInterval(createPetal, 1000);
+
+    setTimeout(() => {
+        clearInterval(intervaloPetalos);
+    }, 10000);
 
     function copiarCuenta() {
 
